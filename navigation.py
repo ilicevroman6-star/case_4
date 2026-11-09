@@ -303,3 +303,19 @@ def analyze_windows_structure_recursive(
             results.extend(sub_directory_results)
 
     return results
+
+# example
+# if __name__ == "__main__":
+#     current_working_dir = os.getcwd()
+#     print(get_current_drive())
+#     print(list_available_drives())
+#     status, directory_items = list_directory(current_working_dir)
+#     print(status)
+#     format_directory_output(directory_items)
+#     print(move_up(current_working_dir))
+#     special_system_folders = get_windows_special_folders()
+#     print(special_system_folders)
+#     print(build_windows_tree_recursive(current_working_dir, max_depth=2))
+#     path_explorer_generator = recursive_path_explorer(current_working_dir)
+#     print(next(path_explorer_generator))
+#     print(analyze_windows_structure_recursive(current_working_dir, pattern='*.py'))
