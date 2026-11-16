@@ -252,7 +252,7 @@ def collect_windows_metadata_recursive(path: Pathstring, max_depth: int = 10,
                 folder_metadata["total_size_bytes"] += child_info["total_size_bytes"]
 
                 for extension, count in child_info["extensions"].items():
-                    folder_metadata["extensions"][extension] = folder_metadata["extensions"].get(extension, 0) + 1
+                    folder_metadata["extensions"][extension] = folder_metadata["extensions"].get(extension, 0) + count
 
             if child_info["hidden"]:
                 folder_metadata["hidden_count"] += 1
