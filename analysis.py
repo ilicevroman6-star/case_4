@@ -256,9 +256,8 @@ def show_windows_directory_stats(path: str) -> bool:
 
     return True
 
-
 # Тест (запускать только этот файл)
-
+"""
 if __name__ == "__main__":
     # Он создает временную папку, кладет туда файлы и проверяет все 5 функций.
 
@@ -299,3 +298,4 @@ if __name__ == "__main__":
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
         print("\nВременная папка удалена. Тест завершен.")
+"""
