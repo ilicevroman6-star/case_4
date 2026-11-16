@@ -206,10 +206,9 @@ def show_windows_directory_stats(path: str) -> bool:
         print("[!] Не удалось прочитать каталог.")
         return False
 
-    # Общий размер.
+
     ok_bytes, total_bytes = count_bytes(path)
 
-    # Считаем подкаталоги верхнего уровня.
     dirs_count = 0
     ok_dir, items = navigation.list_directory(path)
     if ok_dir:
@@ -236,11 +235,16 @@ def show_windows_directory_stats(path: str) -> bool:
 
     # Крупнейшие файлы.
     files, errors = _get_all_files(path)
-    big = sorted(
-        [(f, i) for f, i in files if isinstance(i.get("size"), int) and i["size"] > 0],
-        key=lambda x: x[1]["size"],
-        reverse=True,
-    )[:10]
+
+    valid_files = []
+    for f, i in files:
+        size = i.get("size")
+        if isinstance(size, int) and size > 0:
+            valid_files.append((f, i))
+
+    valid_files.sort(key=lambda x: x[1]["size"], reverse=True)
+
+    big = valid_files[:10]
     if big:
         print("\n--- Крупнейшие файлы ---")
         for full, info in big:
