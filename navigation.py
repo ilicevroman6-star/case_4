@@ -56,7 +56,7 @@ def list_directory(path: str) -> Tuple[bool, List[Dict[str, Any]]]:
             mod_time = "0000-00-00"
 
         item_type = 'folder' if is_dir else 'file'
-        hidden_status = is_hidden_windows_file(full_path) or item.startswith('.')
+        hidden_status = is_hidden_windows_file(full_path)
 
         data.append({
             'name': item,
@@ -119,7 +119,7 @@ def move_down(current_path: str, target_dir: str) -> Tuple[bool, str]:
     new_path = os.path.join(current_path, target_dir)
     is_valid, _ = validate_windows_path(new_path)
 
-    if is_valid and os.path.exists(new_path):
+    if is_valid:
         return True, new_path
 
     return False, current_path
